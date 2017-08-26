@@ -1,4 +1,5 @@
 FROM tomcat:8-alpine
+MAINTAINER wanlay <wlwanlay@gmail.com>
 WORKDIR /app
 VOLUME /app
 VOLUME /usr/local/tomcat/logs
