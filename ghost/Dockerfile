@@ -1,6 +1,6 @@
 FROM alpine:3.6
 MAINTAINER wanlay <wlwanlay@gmail.com>
-ARG VERSION=1.5.2
+ARG VERSION=1.7.1
 
 ENV GHOST_NODE_VERSION_CHECK=false \
     NODE_ENV=production \
