@@ -4,6 +4,7 @@ MAINTAINER wanlay <wlwanlay@gmail.com>
 USER root
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   && echo 'Asia/Shanghai' >/etc/timezone 
-RUN apt-get update && apt-get install -y zip
+RUN apt-get update && apt-get install -y zip \
+  && echo "docker:x:${dockerGid}:jenkins" >> /etc/group 
 # drop back to the regular jenkins user - good practice
 USER jenkins
