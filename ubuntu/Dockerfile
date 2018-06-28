@@ -1,4 +1,4 @@
-FROM       ubuntu:16.04
+FROM       node:8
 LABEL maintainer="wlwanaly@gmail.com"
 
 # 将源修改为中科大
@@ -6,10 +6,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common \
-    openssh-server supervisor curl
-    
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -  \
-    apt-get install -y nodejs \
+    openssh-server supervisor curl \ 
     && rm -rf /var/lib/apt/lists/* \
     && npm config set registry https://registry.npm.taobao.org 
     
