@@ -2,7 +2,7 @@ FROM       node:8
 LABEL maintainer="wlwanaly@gmail.com"
 
 RUN apt-get update && apt-get install -y --no-install-recommends  \
-    openssh-server supervisor \ 
+    openssh-server supervisor python3 python3-dev \ 
     && rm -rf /var/lib/apt/lists/* \
     && npm config set registry https://registry.npm.taobao.org 
     
