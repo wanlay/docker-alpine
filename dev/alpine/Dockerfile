@@ -8,7 +8,7 @@ RUN apk add --no-cache openssh-server supervisor python3 \
 RUN mkdir /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor.d/supervisord.conf
 
 RUN echo 'root:root' |chpasswd
 
