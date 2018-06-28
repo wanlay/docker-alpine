@@ -1,7 +1,8 @@
 FROM       node:8-alpine
 LABEL maintainer="wlwanaly@gmail.com"
 
-RUN apk add --no-cache openssh-server supervisor\
+RUN apk add --no-cache openssh-server supervisor python3 \
+    python3-dev \
     && npm config set registry https://registry.npm.taobao.org 
     
 RUN mkdir /var/run/sshd
