@@ -6,11 +6,13 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common \
-    openssh-server supervisor \
-    && apt-get autoclean \
-    && apt-get autoremove \
-    && rm -rf /var/lib/apt/lists/*
-
+    openssh-server supervisor curl
+    
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -  \
+    apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm config set registry https://registry.npm.taobao.org 
+    
 RUN mkdir /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
