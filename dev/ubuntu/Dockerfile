@@ -1,11 +1,7 @@
 FROM       node:8
 LABEL maintainer="wlwanaly@gmail.com"
 
-# 将源修改为中科大
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-    && sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-
-RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common \
+RUN apt-get update && apt-get install -y --no-install-recommends  \
     openssh-server supervisor \ 
     && rm -rf /var/lib/apt/lists/* \
     && npm config set registry https://registry.npm.taobao.org 
