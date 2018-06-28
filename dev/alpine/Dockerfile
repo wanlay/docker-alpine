@@ -1,0 +1,19 @@
+FROM       node:8-alpine
+LABEL maintainer="wlwanaly@gmail.com"
+
+RUN apk add --no-cache openssh-server supervisor\
+    && npm config set registry https://registry.npm.taobao.org 
+    
+RUN mkdir /var/run/sshd
+RUN mkdir -p /var/log/supervisor
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+RUN echo 'root:root' |chpasswd
+
+RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+
+EXPOSE 22
+
+CMD    ["/usr/bin/supervisord"]

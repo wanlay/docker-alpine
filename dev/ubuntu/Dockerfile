@@ -6,7 +6,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common \
-    openssh-server supervisor curl \ 
+    openssh-server supervisor \ 
     && rm -rf /var/lib/apt/lists/* \
     && npm config set registry https://registry.npm.taobao.org 
     
