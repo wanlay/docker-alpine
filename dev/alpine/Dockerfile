@@ -2,7 +2,7 @@ FROM       node:8-alpine
 LABEL maintainer="wlwanaly@gmail.com"
 
 RUN apk add --no-cache openssh-server supervisor python3 \
-    python3-dev py-pip \
+    python3-dev py-pip bash\
     && npm config set registry https://registry.npm.taobao.org  \
     && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
     && echo 'root:root' |chpasswd \
